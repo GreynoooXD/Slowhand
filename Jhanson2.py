@@ -616,7 +616,7 @@ def passwrd():
 #--------------------[ METODE-B-API ]-----------------#
 def crack(idf,pwv):
 	global loop,ok,cp
-	bi = random.choice([u,k,kk,b,h,hh])
+	bi = random.choice([m,k,h,b,u,x])
 	pers = loop*100/len(id2)
 	fff = '%'
 	nip=random.choice(prox)
