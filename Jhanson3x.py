@@ -90,7 +90,7 @@ for i in range(10000):
 for i in range(10000):
 	rr = random.randint
 	andro = f"{(rr(4,13))}"
-	memek = f"Dalvik/2.1.0 (Linux; U; Android {andro}; vivo V3Max Build/LMY47V) [FBAN/Orca-Android;FBAV/{(rr(100,467))}.0.0.16.158;FBPN/com.facebook.orca;FBLC/en_US;FBBV/{(rr(100000000,9000000000))};FBCR/null;FBMF/vivo;FBBD/vivo;FBDV/vivo V3Max;FBSV/{andro};FBCA/armeabi-v7a:armeabi;FBDM/"+"{density=3.0,width=1080,height=1920"
+	memek = f"Dalvik/2.1.0 (Linux; U; Android 10; Redmi 8 MIUI/V11.0.3.0.QCNMIXM)"
 	momok = random.choice([memek])
 	ugent.append(momok)
 
