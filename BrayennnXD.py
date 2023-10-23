@@ -194,38 +194,38 @@ def clear():
 	os.system('clear')
 #------------------[ LOGO-LAKNAT ]-----------------#
 def banner():
-	clear()
-	alvino_xy(f'''\t{asu} ______                                              
-\t|_   _ \                                             
-\t  | |_) | _ .--.  ,--.   ____   ____  .---.  _ .--.  
-\t  |  __'.[ `/'`\]`'_\ : [_   ] [_   ]/ /__\\[ `/'`\] 
-\t _| |__) || |    // | |, .' /_  .' /_| \__., | |     	
-\t|_______/[___]   \'-;__/[_____][_____]'.__.'[___]    	
-			{m}•{k}•{h}•{sir} Author : Febriven_Greyno {x}{m}•{k}•{h}•{x}''')
+	cetak(panel(f"""[bold green]                ___  ____ ____ _   _ ____ _  _ _  _ _  _ 
+                |__] |__/ |__|  \_/  |___ |\ | |\ | |\ | 
+                |__] |  \ |  |   |   |___ | \| | \| | \|                                                                                                        
+             """,width=90,padding=(0,8),title=f"Banner",style=f"bold white"))
 #--------------------[ BAGIAN-MASUK ]--------------#
-def login():
+def login123():
+	os.system('clear')
+	banner()
+	cedef login():
 	try:
 		token = open('.token.txt','r').read()
 		cok = open('.cok.txt','r').read()
 		tokenku.append(token)
 		try:
-			basariheker = requests.get('https://graph.facebook.com/me?fields=id&access_token='+tokenku[0], cookies={'cookie':cok})
-			basganteng = json.loads(basariheker.text)['id']
-			menu(basganteng)
+			sy = requests.get('https://graph.facebook.com/me?fields=id,name&access_token='+tokenku[0], cookies={'cookie':cok})
+			sy2 = json.loads(sy.text)['name']
+			sy3 = json.loads(sy.text)['id']
+			menu(sy2,sy3)
 		except KeyError:
-			login_lagi334()
+			login123()
 		except requests.exceptions.ConnectionError:
-			li = '# PROBLEM INTERNET CONNECTION, CHECK AND TRY AGAIN'
+			li = ' [+] Problem Internet Connection, Check And Try Again'
 			lo = mark(li, style='red')
 			sol().print(lo, style='cyan')
 			exit()
 	except IOError:
-		login_lagi334()
+		login123()
+		
 def login_lagi334():
 	try:
-		os.system('clear')
-		banner()
-		cok = input('[+] masukan cookie : ')
+		cetak(nel('Disarankan Untuk Menggunakan Cookie Yang Masih Fresh Untuk Melakukan Crack Account',width=90,style=f"bold white"))
+		your_cookies = input(' [+] Masukan Cookie : ')
 		cos = {'cookie':cok}; data = {'access_token': '1348564698517390|007c0a9101b9e1c8ffab727666805038', 'scope': ''}; req  = ses.post('https://graph.facebook.com/v16.0/device/login/',data=data).json(); cd   = req['code']; ucd  = req['user_code']; url  = 'https://graph.facebook.com/v16.0/device/login_status?method=post&code=%s&access_token=1348564698517390|007c0a9101b9e1c8ffab727666805038'%(cd); req  = sop(ses.get('https://mbasic.facebook.com/device',cookies=cos).content,'html.parser'); raq  = req.find('form',{'method':'post'}); dat  = {'jazoest' : re.search('name="jazoest" type="hidden" value="(.*?)"',str(raq)).group(1), 'fb_dtsg' : re.search('name="fb_dtsg" type="hidden" value="(.*?)"',str(req)).group(1), 'qr' : '0', 'user_code' : ucd}; rel  = 'https://mbasic.facebook.com' + raq['action']; pos  = sop(ses.post(rel,data=dat,cookies=cos).content,'html.parser')
 		dat  = {}
 		raq  = pos.find('form',{'method':'post'})
