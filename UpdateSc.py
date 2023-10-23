@@ -247,16 +247,20 @@ def nge_krek():
 	print(f'{xxx}─────────────────────────────')
 	idnyanih = input(f'└── id : ')
 	try:
-		params = {
-			"access_token": token, 
-			"fields": "name,friends.fields(id,name,birthday)"
-			}
-			b = ses.get("https://graph.facebook.com/{}".format(a),params = params,cookies = {'cookie': cok}).json()
-			for c in b["friends"]["data"]:
-				id.append(c["id"]+"|"+c["name"])
-			print('>> Total Idz : {}'.format(len(id)));setting()
-		except Exception as e:
-			print(e)
+		ambilid = requests.get('https://graph.facebook.com/v16.0/'+idnyanih+'?fields=friends.limit(5001)&access_token='+tokenefb[0],cookies={'cookie': cok}).json()
+		for proses in ambilid['friends']['data']:
+			try:id.append(proses['id']+'|'+proses['name'])
+			except:continue
+		print(f'└── terkumpul : '+str(len(id)))
+		atur_dulu()
+	except requests.exceptions.ConnectionError:
+		baz_anim(f'{puti}└──{mer} koneksi terputus')
+		exit()
+	except (KeyError,IOError):
+		baz_anim(f'{puti}└──{mer} teman tidak publik')
+		baz_anim(f'{puti}└──{mer} ganti id target nya')
+		waktu(1)
+		nge_krek()
 
 ###----------[ CRACK  FILE ]----------###
 def file_dump():
