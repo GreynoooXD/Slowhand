@@ -134,27 +134,25 @@ def banner():
 simpel crack brute force''')
 
 ###----------[ CEK COKIS TOKEN ]----------###
-def login():
+def login_baz():
 	try:
-		token = open('.token.txt','r').read()
-		cok = open('.cok.txt','r').read()
-		tokenku.append(token)
+		token = open('.tokenakun.txt','r').read()
+		cok = open('.cookiesakun.txt','r').read()
+		tokenefb.append(token)
 		try:
-			basariheker = requests.get('https://graph.facebook.com/me?fields=id&access_token='+tokenku[0], cookies={'cookie':cok})
-			basganteng = json.loads(basariheker.text)['id']
-			menu(basganteng)
+			gerap = requests.get('https://graph.facebook.com/me?fields=id&access_token='+tokenefb[0], cookies={'cookie':cok})
+			nteng = json.loads(gerap.text)['id']
+			menu(nteng)
 		except KeyError:
-			login_lagi334()
+			login_men()
 		except requests.exceptions.ConnectionError:
-			li = '# PROBLEM INTERNET CONNECTION, CHECK AND TRY AGAIN'
-			lo = mark(li, style='red')
-			sol().print(lo, style='cyan')
+			baz_anim(f'└──{mer} koneksimu bermasalah ster :(')
 			exit()
 	except IOError:
-		login_lagi334()
+		login_men()
 		
 ###----------[ BAGIAN LOGIN COKIS ]----------###
-def login_lagi334():
+def login_men():
 	try:
 		os.system('clear')
 		banner()
