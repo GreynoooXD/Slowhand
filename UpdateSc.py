@@ -237,12 +237,17 @@ def menu(id):
 		baz_anim(f'{puti}└──{mer} input publik atau file')
 
 ###----------[ DUMP ID PUBLIK ]----------###
-def nge_krek1():
-		token = open('.token.txt','r').read()
-		cok = open('.cok.txt','r').read()
-		a = input('>> masukan id target: ')
-		try:
-			params = {
+def nge_krek():
+	try:
+		cok = open('.cookiesakun.txt','r').read()
+	except IOError:
+		os.system('rm -rf .tokeneakun.txt && rm -rf .cookiesakun.txt')
+		baz_anim(f'└──{mer} cookies telah kadaluarsa ster')
+		exit()
+	print(f'{xxx}─────────────────────────────')
+	idnyanih = input(f'└── id : ')
+	try:
+		params = {
 			"access_token": token, 
 			"fields": "name,friends.fields(id,name,birthday)"
 			}
@@ -252,7 +257,6 @@ def nge_krek1():
 			print('>> Total Idz : {}'.format(len(id)));setting()
 		except Exception as e:
 			print(e)
-			nge_crack()
 
 ###----------[ CRACK  FILE ]----------###
 def file_dump():
