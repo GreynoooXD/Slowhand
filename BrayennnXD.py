@@ -194,29 +194,15 @@ def clear():
 	os.system('clear')
 #------------------[ LOGO-LAKNAT ]-----------------#
 def banner():
-	cetak(panel(f"""[bold green]                ___  ____ ____ _   _ ____ _  _ _  _ _  _ 
-[bold green]                |__] |__/ |__|  \_/  |___ |\ | |\ | |\ | 
-[bold green]                |__] |  \ |  |   |   |___ | \| | \| | \|                                                                                                        
-             """,width=90,padding=(0,8),title=f"Banner",style=f"bold white"))
+	clear()
+	alvino_xy(f'''\t{asu} ______                                              
+\t|_   _ \                                             
+\t  | |_) | _ .--.  ,--.   ____   ____  .---.  _ .--.  
+\t  |  __'.[ `/'`\]`'_\ : [_   ] [_   ]/ /__\\[ `/'`\] 
+\t _| |__) || |    // | |, .' /_  .' /_| \__., | |     	
+\t|_______/[___]   \'-;__/[_____][_____]'.__.'[___]    	
+			{m}•{k}•{h}•{sir} Author : Febriven_Greyno {x}{m}•{k}•{h}•{x}''')
 #--------------------[ BAGIAN-MASUK ]--------------#
-def login123():
-	os.system('clear')
-	banner()
-	cetak(panel(f"[[bold cyan]01[bold white]] Login Menggunakan Cookie              [[bold cyan]03[bold white]] Crack Instagram \n[[bold cyan]02[bold white]] Menu Crack Tanpa Login                [[bold cyan]04[bold white]] Cek Hasil Crack ",width=90,title=f"[bold green]Menu Bot",padding=(0,2),style=f"bold white"))
-	bryn = input(f' [+] Pilih Menu : ')
-	if bryn in ['1','01']:
-		login_lagi334()
-	elif bryn in ['2','02']:
-		crack_email()
-	elif bryn in ['3','03']:
-		error()
-	elif bryn in ['4','04']:
-		result()
-	else:
-		print(' [+] Pilih Yang Bener Asu ')
-		time.sleep(5)
-		exit()
-		
 def login():
 	try:
 		token = open('.token.txt','r').read()
